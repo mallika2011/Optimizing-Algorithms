@@ -17,15 +17,30 @@ static inline void merge(int arr[], int l, int m, int r)
     int n2 = r - m;
 
     int a[n1], b[n2];
+    int e = 0, t = 1;
 
     for (i = 0; i < n1; i++)
-        a[i] = arr[l + i];
+    { 
+        //  a[i] = arr[l + i];
+        //TODO: Added assembly instructions
+         asm("movl %1, %0;":"=r"(a[i]):"r"(arr[l+i]));
+        
+    }
     for (j = 0; j < n2; j++)
-        b[j] = arr[m + 1 + j];
+    {
+        // b[j] = arr[m + 1 + j];
+        //TODO: Added assembly instructions
+        asm("movl %1, %0;":"=r"(b[j]):"r"(arr[m+1+j]));
 
-    i = 0;
-    j = 0;
-    k = l;
+    }
+    
+    asm("movl %1, %0;":"=r"(i):"r"(0));
+    asm("movl %1, %0;":"=r"(j):"r"(0));
+    asm("movl %1, %0;":"=r"(k):"r"(l));
+
+    // i = 0;
+    // j = 0;
+    // k = l;
     while (i < n1 && j < n2)
     {
         //TODO: Change2: Rewriting the method to calculate the minimum
@@ -38,14 +53,16 @@ static inline void merge(int arr[], int l, int m, int r)
 
     while (i < n1)
     {
-        arr[k] = a[i];
+        // arr[k] = a[i];
+        asm("movl %1, %0;":"=r"(arr[k]):"r"(a[i]));
         i++;
         k++;
     }
 
     while (j < n2)
     {
-        arr[k] = b[j];
+        // arr[k] = b[j];
+        asm("movl %1, %0;":"=r"(arr[k]):"r"(b[j]));
         j++;
         k++;
     }
@@ -80,12 +97,12 @@ static inline int *merge_sort(int *arr, int n)
     }
     for (int i = 0; i < n; i++)
     {
-        ret[i] = arr[i];
+        // ret[i] = arr[i];
+        asm("movl %1, %0;":"=r"(ret[i]):"r"(arr[i]));
     }
 
     return ret;
 }
-
 
 void show(int a[], int n)
 {
