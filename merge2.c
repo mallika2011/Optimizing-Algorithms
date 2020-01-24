@@ -11,7 +11,23 @@
 
 //TODO: Bit hacks used for min of two elements
 int min(int x, int y) { return y ^ ((x ^ y) & -(x <= y)); }
-// void merge(int arr[], int l, int m, int r);
+
+//TODO: Adding an insertion sort
+static inline void insertion(int a[], int l, int r)
+{
+    for(int i=l+1; i<=r;i++)
+    {
+        int t=a[i];
+        int k=i-1;
+        while(k>=0 && a[k]>=t)
+        {
+            a[k+1]=a[k];
+            k--;
+        }
+        a[k]=t;
+
+    }
+}
 
 static inline void merge(int arr[], int l, int m, int r)
 {
@@ -122,8 +138,6 @@ int main()
     double sum = 0;
     struct timespec start, stop;
 
-    // n=MAXSIZE;
-    // printf("%d\n",n);
     for (int x = 0; x < iter; x++)
     {
         for (long int i = 0; i < n; i++)
@@ -151,7 +165,6 @@ int main()
         double NS =  (double)( stop.tv_nsec - start.tv_nsec )/(double)BILLION;
 
         double final=S+NS;
-
         // printf("total seconds: %e\n\n\n", (double)sec + (double)ns / (double)1000000000);
         sum += final / 10;
     }
