@@ -116,6 +116,7 @@ void show(int a[], int n)
 
 int main()
 {
+    srand(time(0));
     int iter = 10,n=1000000;
     int *arr = (int *)malloc(n * sizeof(int));
     int *r = (int *)malloc(n * sizeof(int));

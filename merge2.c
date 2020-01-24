@@ -8,6 +8,7 @@
 
 #define MAXSIZE 1000000
 #define BILLION  1000000000L
+#define CHUNK 32
 
 //TODO: Bit hacks used for min of two elements
 int min(int x, int y) { return y ^ ((x ^ y) & -(x <= y)); }
@@ -19,12 +20,12 @@ static inline void insertion(int a[], int l, int r)
     {
         int t=a[i];
         int k=i-1;
-        while(k>=0 && a[k]>=t)
+        while(k>=l && a[k]>=t)
         {
             a[k+1]=a[k];
             k--;
         }
-        a[k]=t;
+        a[k+1]=t;
 
     }
 }
@@ -104,7 +105,13 @@ static inline int *merge_sort(int *arr, int n)
     int curr_size;
     int left_start;
 
-    for (curr_size = 1; curr_size <= n - 1; curr_size = 2 * curr_size)
+    //TODO: Using insertion sort for smaller arrays
+    for(int i=0; i<n; i+=CHUNK)
+    {
+        insertion(arr,i, min((i+31),(n-1)));
+    }
+
+    for (curr_size = CHUNK; curr_size <= n - 1; curr_size = 2 * curr_size)
     {
         for (left_start = 0; left_start < n - 1; left_start += 2 * curr_size)
         {
@@ -132,7 +139,8 @@ void show(int a[], int n)
 
 int main()
 {
-    int iter = 10,n=1000000;
+    srand(time(0));
+    int iter = 1,n=1000000;
     int *arr = (int *)malloc(n * sizeof(int));
     int *r = (int *)malloc(n * sizeof(int));
     double sum = 0;
@@ -166,7 +174,7 @@ int main()
 
         double final=S+NS;
         // printf("total seconds: %e\n\n\n", (double)sec + (double)ns / (double)1000000000);
-        sum += final / 10;
+        sum += final / iter;
     }
     printf("Avg Run Time: %lfns\n\n", sum);
 
