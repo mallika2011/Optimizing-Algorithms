@@ -1,5 +1,12 @@
 # Optimizing algorithms
 
+
+## Authors
+
+* **Mallika Subramanian** - [Mallika Subramanian](https://github.com/mallika2011)
+
+* **Jyoti Sunkara** - [Jyoti Sunkara](https://github.com/JyotiSunkara)
+
 ## Objective
 
 > Optimising code for matrix multiplication and merge sort, as well as gaining understanding of optimization methods and tools.
