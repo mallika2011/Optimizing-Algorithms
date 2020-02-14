@@ -1,11 +1,4 @@
-# Optimizing algorithms
-
-
-## Authors
-
-* **Mallika Subramanian** - [Mallika Subramanian](https://github.com/mallika2011)
-
-* **Jyoti Sunkara** - [Jyoti Sunkara](https://github.com/JyotiSunkara)
+# Churu-Darth-Romance
 
 ## Objective
 
