@@ -1,4 +1,4 @@
-# Churu-Darth-Romance
+# Optimizing Matrix Multiplication & Merge Sort
 
 ## Objective
 
